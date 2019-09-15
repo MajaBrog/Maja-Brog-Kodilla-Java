@@ -6,6 +6,7 @@ build/
 !**/src/test/**
 **/out/
 **/build/
+
 ### STS ###
 .apt_generated
 .classpath
