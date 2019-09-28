@@ -23,7 +23,7 @@ public class FirstChallenge {
 
         } catch (ArithmeticException e) {
 
-            System.out.println("divide by 0 error");
+            System.out.println("You are trying to divide by 0");
 
         } finally {
 
