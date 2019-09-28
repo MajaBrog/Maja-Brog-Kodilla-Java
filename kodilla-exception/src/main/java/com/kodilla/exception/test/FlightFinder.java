@@ -14,10 +14,7 @@ public class FlightFinder {
         airports.put("Warsaw Chopin Airport", false);
 
         if (airports.containsKey(flight.getArrivalAirport())) {
-            Boolean AirportFound = airports.entrySet().stream()
-                    .filter(e -> e.getKey().equals(flight.getArrivalAirport()))
-                    .map(Map.Entry::getValue)
-                    .allMatch(e -> e == true);
+            boolean AirportFound=airports.get(flight.getArrivalAirport());
             return AirportFound;
         } else {
             throw new RouteNotFoundException("Arrival airport not found");
