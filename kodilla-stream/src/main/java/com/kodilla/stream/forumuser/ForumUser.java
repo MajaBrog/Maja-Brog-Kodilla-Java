@@ -3,7 +3,7 @@ package com.kodilla.stream.forumuser;
 import java.time.LocalDate;
 
 public class ForumUser {
-    private final Integer userID;
+    private final int userID;
     private final String username;
     private final char sex;
     private final LocalDate birthdayDate;
