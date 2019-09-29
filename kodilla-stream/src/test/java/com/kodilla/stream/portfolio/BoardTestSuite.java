@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class BoardTestSuite {
     }
 
     @Test
-    public void testAddTaskList() {
+    public void testAddTaskListFindUsersTasks() {
         //Given
         Board project = prepareTestData();
         //When
@@ -134,11 +135,40 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        List<Task> tasks = project.getTaskLists().stream()
+        long sumOfDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> t.getCreated())
+                .map(t -> ChronoUnit.DAYS.between(t.getCreated(), LocalDate.now()))
+                .reduce(0L, (sum, current) -> sum += current);
 
+        int numberOfTask = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> 1)
+                .reduce(0, (sum, current) -> sum += current);
+
+        double average = sumOfDays / numberOfTask;
+        //Then
+        Assert.assertEquals(10.0, average, 0.0001);
+
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTaskV2() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        double average = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToLong(t -> ChronoUnit.DAYS.between(t.getCreated(), LocalDate.now()))
+                .average()
+                .getAsDouble();
+
+        //Then
+        Assert.assertEquals(10.0, average, 0.0001);
 
     }
 }

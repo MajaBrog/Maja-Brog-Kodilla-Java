@@ -19,8 +19,6 @@ public class FlightFinder {
         } else {
             throw new RouteNotFoundException("Arrival airport not found");
         }
-
-
     }
 
 }
