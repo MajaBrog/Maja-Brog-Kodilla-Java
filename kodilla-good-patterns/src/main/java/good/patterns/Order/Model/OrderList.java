@@ -1,4 +1,4 @@
-package good.patterns.Order;
+package good.patterns.Order.Model;
 
 import java.util.HashMap;
 import java.util.Map;

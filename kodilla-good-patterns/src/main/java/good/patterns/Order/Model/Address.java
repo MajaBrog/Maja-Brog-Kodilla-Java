@@ -1,16 +1,16 @@
-package good.patterns.Order;
+package good.patterns.Order.Model;
 
 public class Address {
-    private String Country;
-    private String City;
+    private String country;
+    private String city;
     private String postalCode;
     private String streetName;
     private String buildingNumber;
     private int houseNumber;
 
     public Address(String country, String city, String postalCode, String streetName, String buildingNumber, int houseNumber) {
-        Country = country;
-        City = city;
+        this.country = country;
+        this.city = city;
         this.postalCode = postalCode;
         this.streetName = streetName;
         this.buildingNumber = buildingNumber;
@@ -20,9 +20,8 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "Country='" + Country + '\'' +
-                ", City='" + City + '\'' +
+        return "{Country='" + country + '\'' +
+                ", City='" + city + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 ", streetName='" + streetName + '\'' +
                 ", buildingNumber='" + buildingNumber + '\'' +
