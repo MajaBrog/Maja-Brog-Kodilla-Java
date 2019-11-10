@@ -2,8 +2,9 @@ package com.kodilla.spring.calculator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Calculator {
     private double result = 0.0;
     @Autowired
