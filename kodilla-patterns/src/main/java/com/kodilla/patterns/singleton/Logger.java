@@ -1,25 +1,29 @@
 package com.kodilla.patterns.singleton;
 
-public class Logger {
+class Logger {
     private static Logger loggerInstance=null;
     private String lastLog = "";
 
-    public Logger() {
+    private Logger() {
     }
 
-    public static Logger getInstance() {
+    static Logger getInstance() {
         if (loggerInstance == null) {
-            loggerInstance = new Logger();
+            synchronized(Logger.class) {
+                if (loggerInstance == null) {
+                    loggerInstance = new Logger();
+                }
+            }
         }
         return loggerInstance;
     }
 
-    public void log(String log) {
+    void log(String log) {
         lastLog = log;
         System.out.println("Log: [" + log + "]");
     }
 
-    public String getLastLog() {
+    String getLastLog() {
         return lastLog;
     }
 }
