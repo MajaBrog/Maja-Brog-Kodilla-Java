@@ -8,3 +8,4 @@ public class FacebookPublisher implements SocialPublisher {
         return "Facebook";
     }
 }
+
