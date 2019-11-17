@@ -6,4 +6,6 @@ include 'com.kodilla.rps'
 include 'kodilla-good-patterns'
 include 'kodilla-spring-intro'
 include 'kodilla-spring'
+include 'kodilla-patterns'
+include 'kodilla-patterns'
 
