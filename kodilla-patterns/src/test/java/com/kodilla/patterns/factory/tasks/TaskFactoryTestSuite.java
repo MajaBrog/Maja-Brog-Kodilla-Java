@@ -1,46 +1,46 @@
 package com.kodilla.patterns.factory.tasks;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TaskFactoryTestSuite {
-    @Test
-    public void testTaskFactoryShopping(){
-        //Given
-        TaskFactory factory=new TaskFactory();
 
+    private TaskFactory factory;
+
+    @Before
+    private void setUp() {
+        factory = new TaskFactory();
+    }
+
+    @Test
+    public void testTaskFactoryShopping() {
         //When
-        Task shoppingTask=factory.createTask(TaskFactory.SHOPPING_TASK);
+        Task shoppingTask = factory.createTask(TaskFactory.SHOPPING_TASK);
 
         //Then
         Assert.assertTrue(shoppingTask.isTaskExecuted());
-        Assert.assertEquals("Buy",shoppingTask.getTaskName());
+        Assert.assertEquals("Buy", shoppingTask.getTaskName());
 
     }
 
     @Test
-    public void testTaskFactoryPainting(){
-        //Given
-        TaskFactory factory=new TaskFactory();
-
+    public void testTaskFactoryPainting() {
         //When
-        Task paintingTask=factory.createTask(TaskFactory.PAINTING_TASK);
+        Task paintingTask = factory.createTask(TaskFactory.PAINTING_TASK);
 
         //Then
         Assert.assertTrue(paintingTask.isTaskExecuted());
-        Assert.assertEquals("Paint",paintingTask.getTaskName());
+        Assert.assertEquals("Paint", paintingTask.getTaskName());
     }
 
     @Test
-    public void testTaskFactoryDriving(){
-        //Given
-        TaskFactory factory=new TaskFactory();
-
+    public void testTaskFactoryDriving() {
         //When
-        Task drivingTask=factory.createTask(TaskFactory.DRIVING_TASK);
+        Task drivingTask = factory.createTask(TaskFactory.DRIVING_TASK);
 
         //Then
         Assert.assertTrue(drivingTask.isTaskExecuted());
-        Assert.assertEquals("Drive",drivingTask.getTaskName());
+        Assert.assertEquals("Drive", drivingTask.getTaskName());
     }
 }
