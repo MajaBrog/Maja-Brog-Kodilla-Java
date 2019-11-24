@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class UserDialogs {
 
-    public static String getName() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please, enter your name:");
-        return scan.nextLine();
-    }
+        public static String getName() {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Please, enter your name:");
+            return scan.nextLine();
+        }
 
     public static int getNumberOfRounds() {
         Scanner scan = new Scanner(System.in);
