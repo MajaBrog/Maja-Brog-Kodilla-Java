@@ -9,7 +9,7 @@ public class TaskFactoryTestSuite {
     private TaskFactory factory;
 
     @Before
-    private void setUp() {
+    public void setUp() {
         factory = new TaskFactory();
     }
 

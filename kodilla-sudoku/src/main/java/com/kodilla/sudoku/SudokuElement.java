@@ -6,7 +6,7 @@ import java.util.List;
 
 class SudokuElement {
 
-    private int value;
+    private Integer value;
     private final int EMPTY = -1;
     List<Integer> possibleValues;
 
@@ -19,7 +19,7 @@ class SudokuElement {
         return possibleValues;
     }
 
-    int getValue() {
+    Integer getValue() {
         return value;
     }
 
@@ -27,7 +27,7 @@ class SudokuElement {
         this.value = value;
     }
 
-     void removeValue(int value){
+     void removePossibleValue(int value){
         possibleValues.remove(value);
 
      }

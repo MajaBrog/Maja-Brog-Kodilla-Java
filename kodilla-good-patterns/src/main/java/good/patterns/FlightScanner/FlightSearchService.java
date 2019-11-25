@@ -1,44 +1,49 @@
 package good.patterns.FlightScanner;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FlightSearchService {
-    private Map<Airport,Airport> connectionList;
-    private List<Airport> foundConnections;
+    private List<Connection> connectionList;
 
-    public FlightSearchService() {
+    FlightSearchService() {
         this.connectionList = new ConnectionsList().getAirportsList();
     }
 
-    public List<Airport> findFlightsFrom(String airport){
-        return connectionList.entrySet().stream()
-                .filter(n -> n.getKey().getName().equals(airport))
-                .map(Map.Entry::getValue)
+    private List<Airport> possibleAirports;
+
+    public void findFlightsFrom(String airport) {
+        possibleAirports = connectionList.stream()
+                .filter(n -> n.getArrivalAirport().getName().equals(airport))
+                .map(Connection::getDepartureAirport)
                 .collect(Collectors.toList());
-    }
-    public List<Airport> findFlightsTo(String airport){
-        return connectionList.entrySet().stream()
-                .filter(n->n.getValue().getName().equals(airport))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-    public List<Airport> findFlightsThrough(String departureAirport,String arrivalAirport){
-        List<Airport> possibleFlightsFromDepartureAirport= connectionList.keySet().stream()
-                .filter(n->n.getName().equals(departureAirport))
-                .collect(Collectors.toList());
-        return connectionList.entrySet().stream()
-                .filter(n->possibleFlightsFromDepartureAirport.contains(n.getKey()))
-                .filter(n->n.getValue().getName().equals(arrivalAirport))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+        if (possibleAirports.size() > 0)
+            System.out.println("You can fly from " + airport + " to " + possibleAirports);
+        else
+            System.out.println("Sorry we did not find matching connection");
     }
 
-    @Override
-    public String toString() {
-        return "FlightSearchService{" +
-                "foundConnections=" + foundConnections +
-                '}';
+    void findFlightsTo(String airport) {
+        possibleAirports = connectionList.stream()
+                .filter(n -> n.getDepartureAirport().getName().equals(airport))
+                .map(Connection::getArrivalAirport)
+                .collect(Collectors.toList());
+        if (possibleAirports.size() > 0)
+            System.out.println("You can fly to " + airport + " from " + possibleAirports);
+        else
+            System.out.println("Sorry we did not find matching connection");
+    }
+
+    public void findFlightsThrough(String departureAirport, String transferAirport, String arrivalAirport) {
+        boolean possibleTransfer = connectionList.stream()
+                .filter(n -> n.getDepartureAirport().getName().equals(departureAirport))
+                .anyMatch(n -> n.getArrivalAirport().getName().equals(transferAirport));
+        boolean possibleArrival = connectionList.stream()
+                .filter(n -> n.getDepartureAirport().getName().equals(transferAirport))
+                .anyMatch(n -> n.getArrivalAirport().getName().equals(arrivalAirport));
+        if (possibleTransfer && possibleArrival)
+            System.out.println("You can fly from " + departureAirport + " to " + transferAirport + " and then to " + arrivalAirport);
+        else
+            System.out.println("Sorry we did not find matching connection");
     }
 }

@@ -28,8 +28,6 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
 }

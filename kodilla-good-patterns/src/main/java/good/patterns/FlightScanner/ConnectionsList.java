@@ -1,30 +1,27 @@
 package good.patterns.FlightScanner;
 
-import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ConnectionsList {
-    private Map<Airport, Airport> connectionsList = new HashMap<>();
+    private List<Connection> connectionsList = new ArrayList<>();
 
     public ConnectionsList() {
         this.connectionsList = connectionsList;
-        connectionsList.put(new Airport("Goleniow"), new Airport("Warsaw"));
-        connectionsList.put(new Airport("Goleniow"), new Airport("Bergen"));
-        connectionsList.put(new Airport("Goleniow"), new Airport("Dublin"));
-        connectionsList.put(new Airport("Warsaw"), new Airport("Paris"));
-        connectionsList.put(new Airport("Warsaw"), new Airport("Goleniow"));
-        connectionsList.put(new Airport("Warsaw"), new Airport("Prague"));
-        connectionsList.put(new Airport("Krakow"), new Airport("Warsaw"));
-        connectionsList.put(new Airport("Krakow"), new Airport("Dublin"));
-        connectionsList.put(new Airport("London"),new Airport("Warsaw"));
-        connectionsList.put(new Airport("London"),new Airport("Dublin"));
-        connectionsList.put(new Airport("London"), new Airport("Prague"));
+        connectionsList.add(new Connection(new Airport("Goleniow"), new Airport("Warsaw")));
+        connectionsList.add(new Connection(new Airport("Goleniow"), new Airport("Bergen")));
+        connectionsList.add(new Connection(new Airport("Goleniow"), new Airport("Dublin")));
+        connectionsList.add(new Connection(new Airport("Warsaw"), new Airport("Paris")));
+        connectionsList.add(new Connection(new Airport("Warsaw"), new Airport("Goleniow")));
+        connectionsList.add(new Connection(new Airport("Warsaw"), new Airport("Prague")));
+        connectionsList.add(new Connection(new Airport("Krakow"), new Airport("Warsaw")));
+        connectionsList.add(new Connection(new Airport("Krakow"), new Airport("Dublin")));
+        connectionsList.add(new Connection(new Airport("London"), new Airport("Warsaw")));
+        connectionsList.add(new Connection(new Airport("London"), new Airport("Dublin")));
+        connectionsList.add(new Connection(new Airport("London"), new Airport("Prague")));
     }
 
-    public Map<Airport, Airport> getAirportsList() {
+    public List<Connection> getAirportsList() {
         return connectionsList;
     }
 

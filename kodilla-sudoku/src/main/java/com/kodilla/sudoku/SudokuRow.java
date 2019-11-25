@@ -5,17 +5,17 @@ import java.util.List;
 
 public class SudokuRow {
     public static final int SIZE = 9;
-    private List<SudokuElement> row;
+    private List<SudokuElement> cols;
 
     public SudokuRow() {
-        row = new ArrayList<SudokuElement>();
+        cols = new ArrayList<SudokuElement>();
         for (int i = 0; i < SIZE; i++) {
-            row.add(i, new SudokuElement());
+            cols.add(i, new SudokuElement());
         }
     }
 
-    public List<SudokuElement> getRow() {
-        return row;
+    public List<SudokuElement> getCols() {
+        return cols;
     }
 
 }
