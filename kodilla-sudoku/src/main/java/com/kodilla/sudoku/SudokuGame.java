@@ -1,24 +1,26 @@
 package com.kodilla.sudoku;
 
-import java.util.List;
-
 public class SudokuGame {
 
     boolean resolveSudoku() {
-        String [] inputVector;
-        SudokuBoard sudokuBoard=new SudokuBoard();
-        while(true) {
-            String input = UserDialog.getInput();
-            if(input.equals("SUDOKU"))break;
-            else {
-                inputVector = input.split(",");
-                int inputRow = Integer.parseInt(inputVector[0]);
-                int inputColumn = Integer.parseInt(inputVector[1]);
-                int inputValue = Integer.parseInt(inputVector[2]);
-                sudokuBoard.setElementValue(inputRow-1, inputColumn-1, inputValue);
+        SudokuBoard sudokuBoard = new SudokuBoard();
+        while (true) {
+            System.out.println(sudokuBoard);
+            UserInput userInput = UserDialog.getUserInput();
+            switch (userInput.getCommand()) {
+                case DEMO:
+                    sudokuBoard.sudokuDemo();
+                    break;
+                case EXIT:
+                    return false;
+                case VALUE:
+                    sudokuBoard.setValue(userInput.getCol(), userInput.getRow(), userInput.getValue());
+                    break;
+                case RESOLVE:
+                    sudokuBoard.resolve();
+                    System.out.println(sudokuBoard);
+                    return UserDialog.newGame();
             }
         }
-        sudokuBoard.resolve();
-        return UserDialog.newGame();
     }
 }

@@ -26,9 +26,4 @@ class SudokuElement {
     void setValue(int value) {
         this.value = value;
     }
-
-     void removePossibleValue(int value){
-        possibleValues.remove(value);
-
-     }
 }
