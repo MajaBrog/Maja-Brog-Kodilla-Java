@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class SudokuBoardTestSuite {
     @Test
-    public void test() {
+    public void testBoard() {
         SudokuBoard sudokuBoard = new SudokuBoard();
         sudokuBoard.sudokuDemo();
         sudokuBoard.resolve();

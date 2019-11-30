@@ -3,14 +3,13 @@ package com.kodilla.sudoku;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SudokuBoard extends Prototype {
+public class SudokuBoard {
     private List<SudokuRow> rows;
     private static final int SIZE = 9;
     private final int EMPTY = -1;
-    private List<Guess> backtrack = new ArrayList<>();
 
     public SudokuBoard() {
-        rows = new ArrayList<SudokuRow>();
+        rows = new ArrayList<>();
         for (int i = 0; i < SIZE; i++) {
             rows.add(i, new SudokuRow());
         }
@@ -83,13 +82,13 @@ public class SudokuBoard extends Prototype {
         return rows.get(row).getCols().get(col);
     }
 
-    public boolean checkIfSudokuResolved() {
+    private boolean checkIfSudokuResolved() {
         return rows.stream()
                 .flatMap(n -> n.getCols().stream())
                 .noneMatch(sudokuElement -> sudokuElement.getValue() == EMPTY);
     }
 
-    public boolean possibleValue(int row, int column, Integer value) {
+    private boolean possibleValue(int row, int column, Integer value) {
         return !existsInRow(row, value) && !existsInColumn(column, value) && !existsInBox(row, column, value);
     }
 
@@ -116,20 +115,20 @@ public class SudokuBoard extends Prototype {
 
     @Override
     public String toString() {
-        String s = "----------------------------\n";
+        StringBuilder s = new StringBuilder("----------------------------\n");
         for (int row = 0; row < SIZE; row++) {
-            s += "|";
+            s.append("|");
             for (int col = 0; col < SIZE; col++) {
                 Integer value = rows.get(row).getCols().get(col).getValue();
                 if (value != EMPTY)
-                    s += " " + value + "|";
+                    s.append(" ").append(value).append("|");
                 else
-                    s += "  |";
+                    s.append("  |");
             }
-            s += "\n";
+            s.append("\n");
         }
-        s += "----------------------------\n";
-        return s;
+        s.append("----------------------------\n");
+        return s.toString();
     }
 
     public void sudokuDemo() {

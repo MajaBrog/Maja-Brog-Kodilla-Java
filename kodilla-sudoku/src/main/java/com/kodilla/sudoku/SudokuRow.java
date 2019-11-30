@@ -8,7 +8,7 @@ public class SudokuRow {
     private List<SudokuElement> cols;
 
     public SudokuRow() {
-        cols = new ArrayList<SudokuElement>();
+        cols = new ArrayList<>();
         for (int i = 0; i < SIZE; i++) {
             cols.add(i, new SudokuElement());
         }

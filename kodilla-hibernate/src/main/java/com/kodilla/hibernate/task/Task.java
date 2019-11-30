@@ -20,11 +20,11 @@ public final class Task {
         this.taskList = taskList;
     }
 
-    @ManyToMany
-    @JoinColumn(name = "TASKLIST ID")
-    public TaskList getTaskList() {
-        return taskList;
-    }
+//    @ManyToMany
+//    @JoinColumn(name = "TASKLIST ID")
+//    public TaskList getTaskList() {
+//        return taskList;
+//    }
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "TASK FINANCIAL ID")
