@@ -10,6 +10,11 @@ import java.util.List;
                 " WHERE SUBSTR(COMPANY_NAME, 1, 4) =:CHARACTERS",
         resultClass=Company.class
 )
+
+@NamedNativeQuery(name = "Company.findCompanyLike",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :KEYWORD , '%')",
+        resultClass = Company.class)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
