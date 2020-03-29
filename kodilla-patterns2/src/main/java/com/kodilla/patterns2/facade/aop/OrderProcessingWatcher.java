@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderProcessingWatcher {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderProcessingWatcher.class);
+
     @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))"+ "&&args(theOrder, theUserId)&&target(object)")
     public void logEvent(OrderDto theOrder, Long theUserId, Object object) throws NoSuchMethodException{
-        LOGGER.info("Class: " + object.getClass().getName() + ", Method: " + object.getClass().getMethod("processOrder", OrderDto.class, Long.class) + ", Args: #1 - orderDto: " +theOrder.toString() + " #2 -  userId: " + theUserId);
+        LOGGER.info("Class: " + object.getClass().getName()  + ", Args: #1 - orderDto: " +theOrder.toString() + " #2 -  userId: " + theUserId);
     }
 }
