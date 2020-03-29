@@ -15,6 +15,6 @@ public class OrderProcessingWatcher {
 
     @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))"+ "&&args(theOrder, theUserId)&&target(object)")
     public void logEvent(OrderDto theOrder, Long theUserId, Object object) throws NoSuchMethodException{
-        LOGGER.info("Class: " + object.getClass().getName()  + ", Args: #1 - orderDto: " +theOrder.toString() + " #2 -  userId: " + theUserId);
+        LOGGER.info("Class: " + object.getClass().getName()  + " "+theOrder.toString() + ", User Id: " + theUserId);
     }
 }
