@@ -20,7 +20,7 @@ public class SearchFacadeTestSuite {
     CompanyDao companyDao;
 
     @Test
-    public void testSearchFacade(){
+    public void testSearchFacade() {
 //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -43,11 +43,8 @@ public class SearchFacadeTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
 
         //When
         try {

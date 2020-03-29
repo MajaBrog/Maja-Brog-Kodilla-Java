@@ -10,7 +10,7 @@ import java.util.List;
         query = "FROM Employee WHERE lastname =: LASTNAME")
 
 
-@NamedNativeQuery(name = "Employee.findEmployeeLike",
+@NamedNativeQuery(name = "Employee.findEmployeesThatContains",
         query = "SELECT * FROM Employee WHERE lastname LIKE CONCAT('%', :KEYWORD , '%')",
         resultClass = Company.class)
 @Entity
