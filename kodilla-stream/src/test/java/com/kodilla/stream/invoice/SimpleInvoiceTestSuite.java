@@ -1,5 +1,8 @@
-package com.kodilla.stream.invoice.simple;
+package com.kodilla.stream.invoice;
 
+import com.kodilla.stream.invoice.SimpleInvoice;
+import com.kodilla.stream.invoice.SimpleItem;
+import com.kodilla.stream.invoice.SimpleProduct;
 import org.junit.Assert;
 import org.junit.Test;
 
